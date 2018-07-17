@@ -1,0 +1,58 @@
+void fb_params()
+{
+       int i;
+       //int default_mda_fn = 25856;  // This is file number "101", starting with bit #9, leftward.
+       //default_mda_fn = 26112;  // This is file number "102", starting with bit #9, leftward.
+ 
+       // (feedback_which)  Define 0 for DOF feedback; 1 for LENGTH feedback(default)
+       // (motion_mode)     0 = DOF(default), 1 = LENGTH, 2 = MDA - these are motion COMMANDS
+ 
+       // Encoded Machine States.
+       EMS[0] = 0;   // Power_up
+       EMS[1] = 1;   // Idle
+       EMS[2] = 2;   // Standby
+       EMS[3] = 3;   // Engaged
+       EMS[4] = 7;   // Parking
+       EMS[5] = 8;   // Fault_1
+       EMS[6] = 9;   // Fault_2
+       EMS[7] = 10;  // Fault_3
+       EMS[8] = 11;  // Disabled
+       EMS[9] = 12;  // Inhibited
+ 
+       if(feedback_which == 1)
+       {
+              if(motion_mode == 0)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 32;
+              }
+              else if(motion_mode == 1)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 0;
+              }
+              else if(motion_mode == 2)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 64 + MDA_FILE_NO;
+              }
+       }
+       else if(feedback_which == 0)
+       {
+              if(motion_mode == 0)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 32+128;
+              }
+              else if(motion_mode == 1)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 0+128;
+              }
+              else if(motion_mode == 2)
+              {
+                     for(i = 0; i < num_ems; i++)
+                           EMS[i] += 64+128 + MDA_FILE_NO;
+              }
+       }
+}

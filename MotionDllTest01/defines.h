@@ -1,0 +1,29 @@
+// Motion Commands
+#define DISABLE 220
+#define PARK 210
+#define LOW_LIMIT_ENABLE 200
+#define LOW_LIMIT_DISABLE 190
+#define ENGAGE 180
+#define START 175
+#define LENGTH_MODE 172
+#define DOF_MODE 170
+#define RESET 160
+#define INHIBIT 150
+#define MDA_MODE 140
+#define NEW_POSITION 130
+#define NEW_MDA 128
+#define NEW_MDA_FILE 155
+
+// The extents for the 6 DOF's.
+#define MIN_ROLL -.50605
+#define MAX_ROLL .50605
+#define MIN_PITCH -.57585
+#define MAX_PITCH .57585
+#define MIN_HEAVE 0.0
+#define MAX_HEAVE -.4572
+#define MIN_SURGE -.38100
+#define MAX_SURGE .38100
+#define MIN_YAW -.50605
+#define MAX_YAW .50605
+#define MIN_SWAY -.38100
+#define MAX_SWAY .38100
