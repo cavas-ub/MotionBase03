@@ -426,29 +426,17 @@ void ShutDownMotionBase()
 		Sleep(100.);
 
 
-	motion_mode = 0;  // it means switch to DOF_MODE below
-
-	for (size_t i = 0; i < 10; i++)
-	{
-		if (motion_mode == 0)
-			SetMotionCommand(swapbits(DOF_MODE));
-		else if (motion_mode == 1)
-			SetMotionCommand(swapbits(LENGTH_MODE));
-		else if (motion_mode == 2)
-			SetMotionCommandMDA(swapbits(MDA_MODE));
+	// now we are in PARK mode
 
 
 
 
-		Sleep(1000.);
 
-		// now wait until we are engaged.
-		printf("waiting ...; state is %d %d...\n", State, EMS[1]);
-	}
-	
-	//while (State != EMS[1])
+	////rd
+	//motion_mode = 0;  // it means switch to DOF_MODE below
+
+	//for (size_t i = 0; i < 10; i++)
 	//{
-
 	//	if (motion_mode == 0)
 	//		SetMotionCommand(swapbits(DOF_MODE));
 	//	else if (motion_mode == 1)
@@ -462,8 +450,27 @@ void ShutDownMotionBase()
 	//	Sleep(1000.);
 
 	//	// now wait until we are engaged.
-	//	printf("waiting for IDLE; state is %d %d...\n", State, EMS[1]);
+	//	printf("waiting ...; state is %d %d...\n", State, EMS[1]);
 	//}
+	
+	while (State != EMS[1])
+	{
+
+		if (motion_mode == 0)
+			SetMotionCommand(swapbits(DOF_MODE));
+		else if (motion_mode == 1)
+			SetMotionCommand(swapbits(LENGTH_MODE));
+		else if (motion_mode == 2)
+			SetMotionCommandMDA(swapbits(MDA_MODE));
+
+
+
+
+		Sleep(1000.);
+
+		// now wait until we are engaged.
+		printf("waiting for IDLE; state is %d %d...\n", State, EMS[1]);
+	}
 
 
 	//Sleep(5000);
