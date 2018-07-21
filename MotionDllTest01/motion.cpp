@@ -242,13 +242,15 @@ int MotionStart(char * host)
 {
 
 	//rd test
-	dll_loaded = true;
 
-	if (dll_loaded)
-	{
-		//if dll was already loaded we don't have to start motion platform again
-		return 1;
-	}
+	//return 1;
+	//dll_loaded = true;
+
+	//if (dll_loaded)
+	//{
+	//	//if dll was already loaded we don't have to start motion platform again
+	//	return 1;
+	//}
 
 
 	UpdateFlag = false;
@@ -277,6 +279,19 @@ int MotionStart(char * host)
 
 
 	dll_loaded = true;
+
+
+
+	
+
+
+
+
+
+
+
+
+
 
 
 	// Fire off the read and write process, or processes.
@@ -411,7 +426,31 @@ void ShutDownMotionBase()
 {
 
 	//rd test
-	return;
+
+	// Close the socket.
+	//closesocket(sendsocket);
+
+
+
+	//if (rev_comm == 0)
+	//{
+	//	readThread.detach();
+	//	writeThread.detach();
+	//}
+	//else
+	//{
+	//	readwriteThread.detach();
+	//}
+
+
+	//// kill the two threads
+	//Running = false;
+
+	//// Close the socket.
+	//closesocket(sendsocket);
+
+
+	//return;
 
 
 
@@ -423,7 +462,13 @@ void ShutDownMotionBase()
 
 	// wait for response
 	while (State != EMS[4])
+	{
+		//printf("waiting ...; state is %d %d...\n", State, EMS[4]);
+		cout << "waiting ...; state is " << State << EMS[4] <<endl;
+
 		Sleep(100.);
+	}
+		
 
 
 	// now we are in PARK mode

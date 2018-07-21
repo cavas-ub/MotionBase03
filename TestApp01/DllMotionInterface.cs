@@ -92,8 +92,10 @@ namespace Mri
         public DllMotionInterface()
         {
             string MBIP = "128.127.55.120";
+            
             if (MotionStart(MBIP) == 1) {
                 Connected = true;
+                
             }
             else
             {

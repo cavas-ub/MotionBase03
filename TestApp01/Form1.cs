@@ -1,14 +1,5 @@
 ﻿using Mri;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestApp01
@@ -73,6 +64,8 @@ namespace TestApp01
 
         private void button1_Click(object sender, EventArgs e)
         {
+            sm.o = 0;
+            
 
             // initializeMB();
             InitMotionControl();
@@ -109,6 +102,8 @@ namespace TestApp01
 
             dllMotionInterface.Disconnect();
             dllMotionInterface = null;
+            Console.Beep();
+            Console.Beep();
 
         }
 
