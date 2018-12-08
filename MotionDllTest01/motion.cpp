@@ -3,6 +3,7 @@
 #include "mb.h"
 
 #include <iostream> //cout
+#include <cmath>	//abs()
 
 
 using std::cerr;
@@ -47,7 +48,14 @@ int motion_mode = 2;	//MDA mode
 
 
 
-int MDA_FILE_NO = 25856;
+//int MDA_FILE_NO = 25856; //101
+
+int MDA_FILE_NO = 26112; //102
+//int MDA_FILE_NO = 26368; //103
+
+
+
+
 double update_speed = 60.0;
 double udf = ((double)update_speed / 60.0);
 
@@ -307,7 +315,11 @@ int MotionStart(char * host)
 	}
 
 
+	cout << "Thread was started.." << endl;
 
+
+
+	
 
 	//// Now send a DOF *Command* mode word
 	//if (rev_comm == 0)
@@ -418,6 +430,9 @@ int MotionStart(char * host)
 
 	// Write an updated command word to the MB.
 	UpdateMotionBase();
+
+	cout << "#####   All set   #####" << endl;
+
 
 	return 1;
 }
@@ -614,9 +629,9 @@ void SetMDA(SendMDA mda_rev)
 	
 	
 	
-	
-	sm_rev = mda_rev;
-
+	//12/6/18
+	//sm_rev = mda_rev;
+	sm_rev_oryginal = mda_rev;
 
 
 	/*std::cout << "SetMDA, a=" << mda_rev.a 
@@ -920,6 +935,18 @@ void ReadWriteMotionBase(void)
 	tv.tv_sec = 0;
 	tv.tv_usec = 0;
 
+
+	//12/6/18 Vibrations
+
+	float	vibr_amplitude = 0.0002f;
+	float	vibr_delta = 1.0f;
+	float	vibr_buffet = 0.0f;
+	float	vibr_factor = 1.0f;
+	float	vibr_factor_threshold = 16.0f;  // speed 16m/s and more -> no vibration, factor = 0  
+
+
+
+
 	printf("  ReadWrite process started...\n");
 	int recvAddrSize = sizeof(cliAddr);
 
@@ -949,6 +976,15 @@ void ReadWriteMotionBase(void)
 			else
 				sendto(sendsocket, (char *)&sm, sizeof(SendMDA), 0, (struct sockaddr *)&remoteSendAddr, sizeof(remoteSendAddr));
 
+
+
+
+
+
+
+
+
+
 			// Prepare the next packet (update/smooth), for DOF mode only.
 			if (motion_mode == 0)
 			{
@@ -963,6 +999,50 @@ void ReadWriteMotionBase(void)
 					s_rev = goal;
 			}
 
+
+			vibr_factor = 1 - (sm_rev_oryginal.s / vibr_factor_threshold);	//sm_rev_oryginal.s - linear speed
+
+			if (vibr_factor<0)
+			{
+				vibr_factor = 0;
+			}
+
+			if (vibr_factor>1)
+			{
+				vibr_factor = 1;
+			}
+
+			vibr_buffet += vibr_amplitude * vibr_delta * vibr_factor;
+			if (abs(vibr_buffet) >= vibr_amplitude)
+			{
+				vibr_delta = -vibr_delta;
+
+				if (vibr_buffet < 0)
+				{
+					vibr_buffet = -vibr_amplitude;
+				}
+				else
+				{
+					vibr_buffet = vibr_amplitude;
+				}
+
+			}
+
+			if (vibr_buffet>0.002) 
+			{
+				vibr_buffet = 0.002;
+			}
+
+			if (vibr_buffet< -0.002)
+			{
+				vibr_buffet = -0.002;
+			}
+
+			sm_rev = sm_rev_oryginal;
+
+			cout << sm_rev.o + vibr_buffet << endl;
+
+			sm_rev.o = sm_rev.o + vibr_buffet;
 			// Reverse the Byte order.
 			rbo();
 
@@ -976,7 +1056,7 @@ void ReadWriteMotionBase(void)
 				if (((1.0 / (float)update_speed) - tt) <= 0.0)
 				{
 					float diff = ((1.0 / (float)update_speed) - tt);
-					//printf("tt, diff: %f %f\n", tt, diff);
+					printf("tt, diff: %f %f\n", tt, diff);
 					break;
 				}
 			}

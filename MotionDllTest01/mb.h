@@ -76,7 +76,7 @@ int sendsocket;
 int receivesocket;
 Response r;
 SendCommand s, s_rev, hold, goal;
-SendMDA sm, sm_rev;
+SendMDA sm, sm_rev, sm_rev_oryginal;
 float da, db, dc, dd, de, df;//the smoothing factors
 int State;//machine state
 
