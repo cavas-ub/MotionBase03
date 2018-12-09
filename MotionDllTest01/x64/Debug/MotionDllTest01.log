@@ -1,0 +1,37 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
+  dllmain.cpp
+  motion.cpp
+e:\ub\motionbase03\motiondlltest01\motion.cpp(173): warning C4018: '<=': signed/unsigned mismatch
+e:\ub\motionbase03\motiondlltest01\motion.cpp(344): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(346): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(366): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(371): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(390): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(416): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(276): warning C4101: 'answer': unreferenced local variable
+e:\ub\motionbase03\motiondlltest01\motion.cpp(484): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(529): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(562): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(564): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(573): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(575): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(584): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(586): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(595): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(597): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(606): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(608): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(617): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(619): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(789): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1068): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1073): warning C4305: '=': truncation from 'double' to 'float'
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1093): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(927): warning C4101: 'endtime': unreferenced local variable
+e:\ub\motionbase03\motiondlltest01\motion.cpp(927): warning C4101: 'begintime': unreferenced local variable
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1158): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1121): warning C4101: 'endtime': unreferenced local variable
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1121): warning C4101: 'begintime': unreferenced local variable
+e:\ub\motionbase03\motiondlltest01\motion.cpp(1203): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1247,5): error MSB3191: Unable to create directory "C:\Users\romandmo\Desktop\LOCAL_DEMOS\TEST DEMOS 2018". Access to the path 'C:\Users\romandmo\Desktop\LOCAL_DEMOS\TEST DEMOS 2018' is denied.

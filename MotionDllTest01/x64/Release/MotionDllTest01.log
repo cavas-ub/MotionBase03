@@ -1,0 +1,41 @@
+﻿  motion.cpp
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(173): warning C4018: '<=': signed/unsigned mismatch
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(344): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(346): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(366): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(371): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(390): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(416): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(276): warning C4101: 'answer': unreferenced local variable
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(484): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(529): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(562): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(564): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(573): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(575): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(584): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(586): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(595): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(597): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(606): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(608): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(617): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(619): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(789): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1033): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1038): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1058): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(927): warning C4101: 'endtime': unreferenced local variable
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(927): warning C4101: 'begintime': unreferenced local variable
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1123): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1086): warning C4101: 'endtime': unreferenced local variable
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1086): warning C4101: 'begintime': unreferenced local variable
+c:\users\romandmo\desktop\motionbase03-master\motiondlltest01\motion.cpp(1168): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+  dllmain.cpp
+     Creating library C:\Users\romandmo\Desktop\MotionBase03-master\MotionDllTest01\x64\Release\MotionLib.lib and object C:\Users\romandmo\Desktop\MotionBase03-master\MotionDllTest01\x64\Release\MotionLib.exp
+  Generating code
+  9 of 124 functions ( 7.3%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    11 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MotionDllTest01.vcxproj -> C:\Users\romandmo\Desktop\MotionBase03-master\MotionDllTest01\x64\Release\MotionLib.dll

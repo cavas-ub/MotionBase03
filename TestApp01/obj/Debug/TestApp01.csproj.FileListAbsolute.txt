@@ -1,0 +1,13 @@
+C:\Users\romandmo\Desktop\LOCAL_DEMOS\TEST DEMOS 2018\Test.exe.config
+C:\Users\romandmo\Desktop\LOCAL_DEMOS\TEST DEMOS 2018\Test.exe
+C:\Users\romandmo\Desktop\LOCAL_DEMOS\TEST DEMOS 2018\Test.pdb
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.Form1.resources
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.Properties.Resources.resources
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.csproj.GenerateResource.cache
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.csproj.CoreCompileInputs.cache
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\Test.exe
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\Test.pdb
+C:\unity\openddsTest3\Assets\Scripts\Test.exe.config
+C:\unity\openddsTest3\Assets\Scripts\Test.exe
+C:\unity\openddsTest3\Assets\Scripts\Test.pdb
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.csprojResolveAssemblyReference.cache

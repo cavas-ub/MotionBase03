@@ -1,0 +1,10 @@
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\bin\Release\Test.exe.config
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\bin\Release\Test.exe
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\bin\Release\Test.pdb
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\TestApp01.csprojResolveAssemblyReference.cache
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\TestApp01.Form1.resources
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\TestApp01.Properties.Resources.resources
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\TestApp01.csproj.GenerateResource.cache
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\TestApp01.csproj.CoreCompileInputs.cache
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\Test.exe
+C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Release\Test.pdb
