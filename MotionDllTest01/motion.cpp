@@ -440,34 +440,6 @@ int MotionStart(char * host)
 void ShutDownMotionBase()
 {
 
-	//rd test
-
-	// Close the socket.
-	//closesocket(sendsocket);
-
-
-
-	//if (rev_comm == 0)
-	//{
-	//	readThread.detach();
-	//	writeThread.detach();
-	//}
-	//else
-	//{
-	//	readwriteThread.detach();
-	//}
-
-
-	//// kill the two threads
-	//Running = false;
-
-	//// Close the socket.
-	//closesocket(sendsocket);
-
-
-	//return;
-
-
 
 	// bring it into park
 	if (motion_mode != 2)
@@ -489,29 +461,6 @@ void ShutDownMotionBase()
 	// now we are in PARK mode
 
 
-
-
-
-	////rd
-	//motion_mode = 0;  // it means switch to DOF_MODE below
-
-	//for (size_t i = 0; i < 10; i++)
-	//{
-	//	if (motion_mode == 0)
-	//		SetMotionCommand(swapbits(DOF_MODE));
-	//	else if (motion_mode == 1)
-	//		SetMotionCommand(swapbits(LENGTH_MODE));
-	//	else if (motion_mode == 2)
-	//		SetMotionCommandMDA(swapbits(MDA_MODE));
-
-
-
-
-	//	Sleep(1000.);
-
-	//	// now wait until we are engaged.
-	//	printf("waiting ...; state is %d %d...\n", State, EMS[1]);
-	//}
 	
 	while (State != EMS[1])
 	{
@@ -942,9 +891,11 @@ void ReadWriteMotionBase(void)
 	float	vibr_delta = 1.0f;
 	float	vibr_buffet = 0.0f;
 	float	vibr_factor = 1.0f;
-	float	vibr_factor_threshold = 16.0f;  // speed 16m/s and more -> no vibration, factor = 0  
+	float	vibr_factor_minimum = 0.1f;	// we don't want to decrease vibration to zero, this is minimum value of factor
+	float	vibr_factor_threshold = 16.0f;  // speed 16m/s and more -> minimum vibration, factor = vibr_factor_minimum 
+	float	vehicle_speed = 0.0f;
 
-
+	VibrationFrequency vibr_freq = VibrationFrequency::Low;
 
 
 	printf("  ReadWrite process started...\n");
@@ -964,17 +915,17 @@ void ReadWriteMotionBase(void)
 
 		if (result > 0)
 		{
-			// Note: use sendsocket, with RECV address and Size!!
-			res2 = recvfrom(sendsocket, (char *)&r, sizeof(Response), 0, (struct sockaddr *)&cliAddr, &recvAddrSize);
-			if (res2 > 0)
-				State = swapbits(r.status);
+			//// Note: use sendsocket, with RECV address and Size!!
+			//res2 = recvfrom(sendsocket, (char *)&r, sizeof(Response), 0, (struct sockaddr *)&cliAddr, &recvAddrSize);
+			//if (res2 > 0)
+			//	State = swapbits(r.status);
 
-			// Interrupt sends packet TO Motion Base.
-			//Sleep(0);
-			if (motion_mode <= 1)
-				sendto(sendsocket, (char *)&s, sizeof(SendCommand), 0, (struct sockaddr *)&remoteSendAddr, sizeof(remoteSendAddr));
-			else
-				sendto(sendsocket, (char *)&sm, sizeof(SendMDA), 0, (struct sockaddr *)&remoteSendAddr, sizeof(remoteSendAddr));
+			//// Interrupt sends packet TO Motion Base.
+			////Sleep(0);
+			//if (motion_mode <= 1)
+			//	sendto(sendsocket, (char *)&s, sizeof(SendCommand), 0, (struct sockaddr *)&remoteSendAddr, sizeof(remoteSendAddr));
+			//else
+			//	sendto(sendsocket, (char *)&sm, sizeof(SendMDA), 0, (struct sockaddr *)&remoteSendAddr, sizeof(remoteSendAddr));
 
 
 
@@ -1000,11 +951,19 @@ void ReadWriteMotionBase(void)
 			}
 
 
-			vibr_factor = 1 - (sm_rev_oryginal.s / vibr_factor_threshold);	//sm_rev_oryginal.s - linear speed
 
-			if (vibr_factor<0)
+
+
+
+			// vibration of the car
+
+			vehicle_speed = sm_rev_oryginal.s; //sm_rev_oryginal.s - linear speed
+			// the amplitude of vibrations (vibr_factor) decrease  as a speed increases
+			vibr_factor = 1 - (vehicle_speed / vibr_factor_threshold);	
+
+			if (vibr_factor< vibr_factor_minimum)
 			{
-				vibr_factor = 0;
+				vibr_factor = vibr_factor_minimum;
 			}
 
 			if (vibr_factor>1)
@@ -1012,10 +971,33 @@ void ReadWriteMotionBase(void)
 				vibr_factor = 1;
 			}
 
+			//determine the frequency of vibration
+			if (vehicle_speed > 10)	// 10m/s -> 22mph 
+			{
+				vibr_freq = VibrationFrequency::High;
+			}
+			else
+			{
+				vibr_freq = VibrationFrequency::Low;
+			}
+			
+
+
 			vibr_buffet += vibr_amplitude * vibr_delta * vibr_factor;
 			if (abs(vibr_buffet) >= vibr_amplitude)
 			{
-				vibr_delta = -vibr_delta;
+				
+				
+				if (vibr_freq == VibrationFrequency::High)
+				{
+					vibr_delta = -2.0f * vibr_delta;
+				}
+				else
+				{
+					vibr_delta = -vibr_delta;
+				}
+
+				
 
 				if (vibr_buffet < 0)
 				{
@@ -1028,6 +1010,8 @@ void ReadWriteMotionBase(void)
 
 			}
 
+
+			// limit the value of vibr_buffet
 			if (vibr_buffet>0.002) 
 			{
 				vibr_buffet = 0.002;
