@@ -887,11 +887,12 @@ void ReadWriteMotionBase(void)
 
 	//12/6/18 Vibrations
 
-	float	vibr_amplitude = 0.0002f;
+	float	vibr_amplitude = 0.0f;
+	float	vibr_max_amplitude = 0.0002f;
 	float	vibr_delta = 1.0f;
 	float	vibr_buffet = 0.0f;
-	float	vibr_factor = 1.0f;
-	float	vibr_factor_minimum = 0.1f;	// we don't want to decrease vibration to zero, this is minimum value of factor
+	float	vibr_amplitude_factor = 1.0f;
+	float	vibr_factor_minimum = 0.0f;	// we don't want to decrease vibration to zero, this is minimum value of factor
 	float	vibr_factor_threshold = 16.0f;  // speed 16m/s and more -> minimum vibration, factor = vibr_factor_minimum 
 	float	vehicle_speed = 0.0f;
 
@@ -959,16 +960,16 @@ void ReadWriteMotionBase(void)
 
 			vehicle_speed = sm_rev_oryginal.s; //sm_rev_oryginal.s - linear speed
 			// the amplitude of vibrations (vibr_factor) decrease  as a speed increases
-			vibr_factor = 1 - (vehicle_speed / vibr_factor_threshold);	
+			vibr_amplitude_factor = 1 - (abs(vehicle_speed) / vibr_factor_threshold);	
 
-			if (vibr_factor< vibr_factor_minimum)
+			if (vibr_amplitude_factor< vibr_factor_minimum)
 			{
-				vibr_factor = vibr_factor_minimum;
+				vibr_amplitude_factor = vibr_factor_minimum;
 			}
 
-			if (vibr_factor>1)
+			if (vibr_amplitude_factor>1)
 			{
-				vibr_factor = 1;
+				vibr_amplitude_factor = 1;
 			}
 
 			//determine the frequency of vibration
@@ -980,35 +981,51 @@ void ReadWriteMotionBase(void)
 			{
 				vibr_freq = VibrationFrequency::Low;
 			}
+			 
 			
-
-
-			vibr_buffet += vibr_amplitude * vibr_delta * vibr_factor;
-			if (abs(vibr_buffet) >= vibr_amplitude)
-			{
-				
+			
 				
 				if (vibr_freq == VibrationFrequency::High)
 				{
-					vibr_delta = -2.0f * vibr_delta;
+					//vibr_delta = -2.0f * vibr_delta;
+					if (vibr_amplitude==1.0f)
+					{
+						vibr_amplitude == -1.0f;
+					}
+					else
+					{
+						vibr_amplitude == 1.0f;
+					}
+
 				}
 				else
-				{
-					vibr_delta = -vibr_delta;
+				{	//low freq
+					//vibr_amplitude loop: 1.0 0.01 -1.0 -0.01 1.0 0.01 -1.0 -0.01 ...
+
+
+					//old vibr_delta = -vibr_delta;
+
+					if (vibr_amplitude == 1.0f)
+					{
+						vibr_amplitude = 0.01f;
+					}
+					else if (vibr_amplitude == 0.01f)
+					{
+						vibr_amplitude = -1.0f;
+					}
+					else if (vibr_amplitude == -1.0f)
+					{
+						vibr_amplitude = -0.01f;
+					}
+					else 
+					{
+						vibr_amplitude = 1.0f;
+					}
+
 				}
 
-				
-
-				if (vibr_buffet < 0)
-				{
-					vibr_buffet = -vibr_amplitude;
-				}
-				else
-				{
-					vibr_buffet = vibr_amplitude;
-				}
-
-			}
+			
+				vibr_buffet = vibr_max_amplitude * vibr_amplitude * vibr_amplitude_factor;
 
 
 			// limit the value of vibr_buffet
@@ -1024,9 +1041,15 @@ void ReadWriteMotionBase(void)
 
 			sm_rev = sm_rev_oryginal;
 
-			cout << sm_rev.o + vibr_buffet << endl;
+			
 
 			sm_rev.o = sm_rev.o + vibr_buffet;
+
+
+			cout << sm_rev.o << " " << vibr_buffet << endl;
+
+
+
 			// Reverse the Byte order.
 			rbo();
 

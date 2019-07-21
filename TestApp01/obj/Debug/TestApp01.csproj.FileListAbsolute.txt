@@ -11,3 +11,12 @@ C:\unity\openddsTest3\Assets\Scripts\Test.exe.config
 C:\unity\openddsTest3\Assets\Scripts\Test.exe
 C:\unity\openddsTest3\Assets\Scripts\Test.pdb
 C:\Users\romandmo\Desktop\MotionBase03-master\TestApp01\obj\Debug\TestApp01.csprojResolveAssemblyReference.cache
+E:\UB\LOCAL_DEMOS\TEST DEMOS 2018\Test.exe.config
+E:\UB\LOCAL_DEMOS\TEST DEMOS 2018\Test.exe
+E:\UB\LOCAL_DEMOS\TEST DEMOS 2018\Test.pdb
+E:\UB\MotionBase03\TestApp01\obj\Debug\TestApp01.Form1.resources
+E:\UB\MotionBase03\TestApp01\obj\Debug\TestApp01.Properties.Resources.resources
+E:\UB\MotionBase03\TestApp01\obj\Debug\TestApp01.csproj.GenerateResource.cache
+E:\UB\MotionBase03\TestApp01\obj\Debug\TestApp01.csproj.CoreCompileInputs.cache
+E:\UB\MotionBase03\TestApp01\obj\Debug\Test.exe
+E:\UB\MotionBase03\TestApp01\obj\Debug\Test.pdb
